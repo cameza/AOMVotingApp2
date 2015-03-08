@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AOMVotingApp</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="image-container set-full-height" >
+    <!--   Big container   -->
+    <div class="container">
+        <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+           
+            <!--      Wizard container        -->   
+            <div class="wizard-container"> 
+                <div class="card wizard-card ct-wizard-blue" id="wizard">
+                    	<div class="wizard-header">
+                        	<div class="logo">
+                              <%= image_tag "aomLogo.png", class: "logo-src"%>
+                          </div>
+                    	</div>
+
+						<%= yield %>
+
+ </div>
+            </div> <!-- wizard container -->
+        </div>
+        </div><!-- end row -->
+    </div> <!--  big container -->
+</div>
+</body>
+
+</html>

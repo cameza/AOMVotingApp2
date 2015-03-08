@@ -1,0 +1,53 @@
+<h1>Listing nominees</h1>
+<ul>
+    <li><a href="#about" data-toggle="tab">Fellow Nomination</a></li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane" id="about">
+      <div class="row">
+          <div class="col-sm-10 col-sm-offset-1">
+            <div class="table-responsive">
+              <table class"table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Mail</th>
+                    <th>Name</th>
+                    <th>Cv</th>
+                    <th>Statement</th>
+                    <th>Committee check</th>
+                    <th>Chairman check</th>
+                    <th>Confirmed</th>
+                    <th>Not confirmed</th>
+                    <th>Abstained</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </thead>
+
+                <tbody class="table-hover">
+                  <% @nominees.each do |nominee| %>
+                    <tr>
+                      <td><%= nominee.mail %></td>
+                      <td><%= nominee.name %></td>
+                      <td><%= nominee.cv %></td>
+                      <td><%= nominee.statement %></td>
+                      <td><%= nominee.committee_check %></td>
+                      <td><%= nominee.chairman_check %></td>
+                      <td><%= nominee.confirmed %></td>
+                      <td><%= nominee.not_confirmed %></td>
+                      <td><%= nominee.abstained %></td>
+                      <td><%= link_to 'Show', nominee %></td>
+                      <td><%= link_to 'Edit', edit_nominee_path(nominee) %></td>
+                      <td><%= link_to 'Destroy', nominee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+              <br>
+              <%= link_to 'New Nominee', new_nominee_path %>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>

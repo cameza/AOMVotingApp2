@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  mail: MyString
+  name: MyString
+  cv: MyText
+  statement: MyText
+  committee_check: false
+  chairman_check: false
+  confirmed: 1
+  not_confirmed: 1
+  abstained: false
+
+two:
+  mail: MyString
+  name: MyString
+  cv: MyText
+  statement: MyText
+  committee_check: false
+  chairman_check: false
+  confirmed: 1
+  not_confirmed: 1
+  abstained: false

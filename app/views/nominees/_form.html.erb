@@ -1,0 +1,29 @@
+<%= simple_form_for(@nominee) do |f| %>
+  <% if @nominee.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@nominee.errors.count, "error") %> prohibited this nominee from being saved:</h2>
+
+      <ul>
+      <% @nominee.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <br><%= f.input :name, label: 'I would like to nominate:', placeholder: 'Jane Doe'%><br>
+  </div>
+  <div class="field">
+    <%= f.input :mail, as: :email, label: 'Her/His email is:', placeholder: 'janedoe@mail.com' %><br>
+  </div>
+  <div class="field">
+    <%= f.input :cv, as: :text, label: 'Paste nominee\'s CV here:', placeholder: 'Copy the CV text and paste it here\n' %><br>
+  </div>
+  <div class="field">
+  <%= f.input :statement, as: :text, label: 'Paste nominee\'s supporting statement here:', placeholder: 'Type here the statement of purpose for your nomination ' %><br><br>
+  </div>
+  <div class="myButton">
+    <%= f.submit "Submit Nomination", :class => 'btn btn-primary btn-fill'%>
+  </div>
+<% end %>

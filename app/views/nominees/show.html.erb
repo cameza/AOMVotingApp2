@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Mail:</strong>
+  <%= @nominee.mail %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @nominee.name %>
+</p>
+
+<p>
+  <strong>Cv:</strong>
+  <%= @nominee.cv %>
+</p>
+
+<p>
+  <strong>Statement:</strong>
+  <%= @nominee.statement %>
+</p>
+
+<p>
+  <strong>Committee check:</strong>
+  <%= @nominee.committee_check %>
+</p>
+
+<p>
+  <strong>Chairman check:</strong>
+  <%= @nominee.chairman_check %>
+</p>
+
+<p>
+  <strong>Confirmed:</strong>
+  <%= @nominee.confirmed %>
+</p>
+
+<p>
+  <strong>Not confirmed:</strong>
+  <%= @nominee.not_confirmed %>
+</p>
+
+<p>
+  <strong>Abstained:</strong>
+  <%= @nominee.abstained %>
+</p>
+
+<%= link_to 'Edit', edit_nominee_path(@nominee) %> |
+<%= link_to 'Back', nominees_path %>
