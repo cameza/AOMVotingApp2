@@ -1,49 +1,36 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Mail:</strong>
-  <%= @nominee.mail %>
-</p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @nominee.name %>
-</p>
+<div class="alert alert-success" role="alert">
+  <ul>
+      <li><%= notice %></li>
+  </ul>
+</div>
 
-<p>
-  <strong>Cv:</strong>
-  <%= @nominee.cv %>
-</p>
+<div class="container">
 
-<p>
-  <strong>Statement:</strong>
-  <%= @nominee.statement %>
-</p>
+  <p>
+    <strong>Mail:</strong>
+    <%= @nominee.mail %>
+  </p>
 
-<p>
-  <strong>Committee check:</strong>
-  <%= @nominee.committee_check %>
-</p>
+  <p>
+    <strong>Name:</strong>
+    <%= @nominee.name %>
+  </p>
 
-<p>
-  <strong>Chairman check:</strong>
-  <%= @nominee.chairman_check %>
-</p>
+  <p>
+    <strong>Cv:</strong>
+    <%= @nominee.cv %>
+  </p>
 
-<p>
-  <strong>Confirmed:</strong>
-  <%= @nominee.confirmed %>
-</p>
+  <p>
+    <strong>Statement:</strong>
+    <%= @nominee.statement %>
+  </p>
 
-<p>
-  <strong>Not confirmed:</strong>
-  <%= @nominee.not_confirmed %>
-</p>
 
-<p>
-  <strong>Abstained:</strong>
-  <%= @nominee.abstained %>
-</p>
+  <%= link_to 'Edit', edit_nominee_path(@nominee) %> |
+  <%= link_to 'Back', nominees_path %>
 
-<%= link_to 'Edit', edit_nominee_path(@nominee) %> |
-<%= link_to 'Back', nominees_path %>
+</div>
+
