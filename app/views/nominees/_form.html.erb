@@ -1,16 +1,4 @@
 <%= simple_form_for(@nominee) do |f| %>
-  <% if @nominee.errors.any? %>
-    <div class="alert alert-danger alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-      <ul>
-        <% @nominee.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <div class="field">
     <br><%= f.input :name, label: 'I would like to nominate:', placeholder: 'Jane Doe'%><br>
@@ -19,7 +7,7 @@
     <%= f.input :mail, as: :email, label: 'Her/His email is:', placeholder: 'janedoe@mail.com' %><br>
   </div>
   <div class="field">
-    <%= f.input :cv, as: :text, label: 'Paste nominee\'s CV here:', placeholder: 'Copy the CV text and paste it here\n' %><br>
+    <%= f.input :cv, as: :text, label: 'Paste nominee\'s CV here:', placeholder: 'Copy the CV text and paste it here.' %><br>
   </div>
   <div class="field">
   <%= f.input :statement, as: :text, label: 'Paste nominee\'s supporting statement here:', placeholder: 'Type here the statement of purpose for your nomination ' %><br><br>
