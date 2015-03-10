@@ -15,6 +15,7 @@ class NomineesController < ApplicationController
   # GET /nominees/new
   def new
     @nominee = Nominee.new
+    @member = Member.all
   end
 
   # GET /nominees/1/edit
