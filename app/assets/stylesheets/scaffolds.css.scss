@@ -42,10 +42,11 @@ div {
 .field_with_errors {
   padding: 2px;
   background-color: #d9534f;
+  width: 100%;
 }
 
 #error_explanation {
-  width: 100%;
+  width: 150%;
   padding: 7px;
   padding-bottom: 0;
   margin-bottom: 20px;

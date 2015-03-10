@@ -1,7 +1,10 @@
 <%= simple_form_for(@nominee) do |f| %>
 
   <div class="field">
-    <br><%= f.input :name, label: 'I would like to nominate:', placeholder: 'Jane Doe'%><br>
+    <br><%= f.input :nominator_mail, label: 'My email is:', placeholder: 'Your email is for validation purpose only'%><br>
+  </div>
+  <div class="field">
+    <%= f.input :name, label: 'I would like to nominate:', placeholder: 'Jane Doe'%><br>
   </div>
   <div class="field">
     <%= f.input :mail, as: :email, label: 'Her/His email is:', placeholder: 'janedoe@mail.com' %><br>

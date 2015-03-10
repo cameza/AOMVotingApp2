@@ -10,6 +10,7 @@
               <table class"table table-bordered">
                 <thead>
                   <tr>
+                    <th>id</th>
                     <th>Mail</th>
                     <th>Name</th>
                     <th>Cv</th>
@@ -28,6 +29,7 @@
                 <tbody class="table-hover">
                   <% @nominees.each do |nominee| %>
                     <tr>
+                      <td><%= nominee.nominator_mail %></td>
                       <td><%= nominee.mail %></td>
                       <td><%= nominee.name %></td>
                       <td><%= nominee.cv %></td>

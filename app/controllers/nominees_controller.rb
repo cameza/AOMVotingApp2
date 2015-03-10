@@ -15,7 +15,6 @@ class NomineesController < ApplicationController
   # GET /nominees/new
   def new
     @nominee = Nominee.new
-    @member = Member.all
   end
 
   # GET /nominees/1/edit
@@ -70,6 +69,6 @@ class NomineesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def nominee_params
-      params.require(:nominee).permit(:mail, :name, :cv, :statement, :committee_check, :chairman_check, :confirmed, :not_confirmed, :abstained)
+      params.require(:nominee).permit(:nominator_mail, :member_id, :mail, :name, :cv, :statement, :committee_check, :chairman_check, :confirmed, :not_confirmed, :abstained)
     end
 end
