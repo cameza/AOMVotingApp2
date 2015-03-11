@@ -7,6 +7,10 @@ class NomineesController < ApplicationController
     @nominees = Nominee.all
   end
 
+  def candidate_selection
+    @nominees = Nominee.all
+  end
+
   # GET /nominees/1
   # GET /nominees/1.json
   def show

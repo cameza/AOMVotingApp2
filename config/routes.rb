@@ -3,6 +3,7 @@ AOMVotingApp2::Application.routes.draw do
 
   resources :nominees
   root 'nominees#index'
+  get '/candidate_selection' => 'nominees#candidate_selection'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
