@@ -48,6 +48,7 @@ class NomineesController < ApplicationController
       if @nominee.update(nominee_params)
         format.html { redirect_to @nominee, notice: 'Nominee was successfully updated.' }
         format.json { head :no_content }
+        #format.js
       else
         format.html { render action: 'edit' }
         format.json { render json: @nominee.errors, status: :unprocessable_entity }

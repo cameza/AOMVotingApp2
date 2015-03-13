@@ -6,8 +6,9 @@ class Nominee < ActiveRecord::Base
 	validates :mail, :uniqueness => { :message => " Warning! - That email belongs to a fellow that was already nominated" }
 	validates :nominator_mail, :uniqueness => { :message => " Warning! - You already submitted a nomination" }
 	validates_format_of :nominator_mail, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, message: "doesn't look like an email address" 
-
 	validate :nominator_mail_is_valid
+
+# Custom validators
 
 	def nominator_mail_is_valid
 		@member = Member.all
