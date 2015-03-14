@@ -34,6 +34,7 @@ class NomineesController < ApplicationController
       if @nominee.save
         format.html { redirect_to @nominee, notice: 'Nominee was successfully created.' }
         format.json { render action: 'show', status: :created, location: @nominee }
+        #format.js
       else
         format.html { render action: 'new' }
         format.json { render json: @nominee.errors, status: :unprocessable_entity }
@@ -48,7 +49,7 @@ class NomineesController < ApplicationController
       if @nominee.update(nominee_params)
         format.html { redirect_to @nominee, notice: 'Nominee was successfully updated.' }
         format.json { head :no_content }
-        #format.js
+        format.js {}
       else
         format.html { render action: 'edit' }
         format.json { render json: @nominee.errors, status: :unprocessable_entity }
@@ -66,6 +67,17 @@ class NomineesController < ApplicationController
     end
   end
 
+  #remote_toggle method for checkboxes to work with javascript
+  def toggle(nominee_id, bool)
+    @nominee = Nominee.find(params[:id])
+
+    if @nominee.update_attributes(:committee_check => params[:committee_check])
+      # update successful
+    else
+      set_flash "Error, please try again"
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_nominee
@@ -74,6 +86,6 @@ class NomineesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def nominee_params
-      params.require(:nominee).permit(:nominator_mail, :member_id, :mail, :name, :cv, :statement, :committee_check, :chairman_check, :confirmed, :not_confirmed, :abstained)
+      params.require(:nominee).permit(:nominator_mail, :member_id, :mail, :name, :cv, :statement, :committee_check, :chairman_check, :confirmed, :not_confirmed, :abstained, :id)
     end
 end

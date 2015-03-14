@@ -4,6 +4,14 @@ AOMVotingApp2::Application.routes.draw do
   resources :nominees
   root 'nominees#index'
   get '/candidate_selection' => 'nominees#candidate_selection'
+  put 'remote_toggle_committee_check' => 'nominees#remote_toggle_committee_check'
+
+  resources :nominees do
+    member do
+      post 'toggle'
+    end
+  end
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
