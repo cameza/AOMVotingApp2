@@ -22,4 +22,6 @@ class Nominee < ActiveRecord::Base
 	    	errors.add(:nominator_mail, "This email address does not exist in our records. Please contact the administrator")
 	    end
 	end
+
+
 end

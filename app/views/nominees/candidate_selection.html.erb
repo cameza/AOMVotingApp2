@@ -14,21 +14,25 @@
       <% @count = 0 %>
       <% @nominees.each do |nominee| %>
       <tr>
-      <%= form_for(nominee, id: 'checkbox_form', remote: true, :html => {:multipart => true, :class => 'form-inline'}) do |f| %>
       <% @count = @count + 1 %>
+      <% @index = @count - 1 %>
+      <%= form_for(nominee, id: 'checkbox_form', remote: true, :html => {:multipart => true, :class => 'form-inline'}) do |f| %>
         <td><%= @count %></td>
-        <% if nominee.committee_check == true %>   
-            <td><span class="glyphicon glyphicon-check" aria-hidden="true"></span></td>
-        <% else %>
-          <td><%= f.check_box :committee_check, as: :boolean, boolean_style: :inline, label: false, onchange: "$(this.form).submit();", :class => "taskCheckbox" %></td>
-        <% end %>
+        <td><%= f.check_box :committee_check, as: :boolean, boolean_style: :inline, :checked => false, label: false, :class => "taskCheckbox", :onChange => "javascript: if($('.taskCheckbox')[#{@index}].checked){if(sure()){$(this.form).submit();}else{$('.taskCheckbox')[#{@index}].checked = false;}};" %>
         <td><%= nominee.name %></td>
         <td><%= nominee.statement %></td>
         <td><%= nominee.cv %></td>
       <% end %>
       </tr>
-      
+      <script type="text/javascript">
+        var sure = function() {
+          var reply = confirm("Are you sure you want to approve this nominee?");
+          if (reply) {return true;}
+        };
+      </script>
       <% end %>
     </table>
   </div>
 </div>
+
+

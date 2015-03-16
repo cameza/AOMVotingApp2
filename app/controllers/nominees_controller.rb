@@ -45,6 +45,17 @@ class NomineesController < ApplicationController
   # PATCH/PUT /nominees/1
   # PATCH/PUT /nominees/1.json
   def update
+    @check = params[:committee_check]
+    @nominees = Nominee.all
+    puts @nominee.id
+    puts @nominee.committee_check_count
+    if @nominee.committee_check_count == nil
+      @nominee.committee_check_count = 1
+    else
+      @nominee.committee_check_count += 1
+    end
+    puts @nominee.committee_check_count
+
     respond_to do |format|
       if @nominee.update(nominee_params)
         format.html { redirect_to @nominee, notice: 'Nominee was successfully updated.' }
@@ -67,16 +78,6 @@ class NomineesController < ApplicationController
     end
   end
 
-  #remote_toggle method for checkboxes to work with javascript
-  def toggle(nominee_id, bool)
-    @nominee = Nominee.find(params[:id])
-
-    if @nominee.update_attributes(:committee_check => params[:committee_check])
-      # update successful
-    else
-      set_flash "Error, please try again"
-    end
-  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -86,6 +87,6 @@ class NomineesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def nominee_params
-      params.require(:nominee).permit(:nominator_mail, :member_id, :mail, :name, :cv, :statement, :committee_check, :chairman_check, :confirmed, :not_confirmed, :abstained, :id)
+      params.require(:nominee).permit(:nominator_mail, :member_id, :mail, :name, :cv, :statement, :committee_check, :committee_check_count, :chairman_check, :confirmed, :not_confirmed, :abstained, :id)
     end
 end
