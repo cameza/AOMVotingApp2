@@ -9,6 +9,8 @@ class NomineesController < ApplicationController
 
   def candidate_selection
     @nominees = Nominee.all
+    @id = params[:id]
+    @current_nominee = @nominees.find_by_id(@id)
   end
 
   # GET /nominees/1

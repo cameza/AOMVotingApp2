@@ -7,27 +7,39 @@
 </div>
 
 <div class="container-fluid" align="justify">
-
-  <p>
-    <strong>Mail:</strong>
-    <%= @nominee.mail %>
-  </p>
-
-  <p>
-    <strong>Name:</strong>
-    <%= @nominee.name %>
-  </p>
-
-  <p>
-    <strong>Cv:</strong>
-    <%= @nominee.cv %>
-  </p>
-
-  <p>
-    <strong>Statement:</strong>
-    <%= @nominee.statement %>
-  </p>
-
+  <div class="row">
+    <div class="col-md-6">
+      <p>
+        <strong>Nominee Name:</strong>
+        <%= @nominee.name %>
+      </p>
+    </div>
+    <div class="col-md-6">
+      <p>
+        <strong>Nominee Mail:</strong>
+        <%= @nominee.mail %>
+      </p>
+    </div>
+  <br>  
+  </div>
+  <div class="row">  
+    <div class="col-md-12">
+      <p><strong>Nominee Statement:</strong></p>
+      <textarea id="statement" class="form-control" rows="5">
+        <%= @nominee.statement %>
+      </textarea>
+    </div>
+  </div>  
+  <br>
+  <div class="row">  
+    <div class="col-md-12">
+      <p><strong>Nominee Curriculum Vitae:</strong></p>
+      <textarea id="cv" class="form-control" rows="20">
+        <%= @nominee.cv %>
+      </textarea>
+    </div>
+  </div>
+  <br>
   <%= link_to 'Edit', edit_nominee_path(@nominee) %>
 </div>
 

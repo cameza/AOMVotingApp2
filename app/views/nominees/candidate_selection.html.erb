@@ -7,8 +7,7 @@
           <th>#</th>
           <th>Approved</th>
           <th>Nominee Name</th>
-          <th>CV</th>
-          <th>Statement</th>
+          <th>Supporting Documents</th>
         </tr>
       </thead>
       <% @count = 0 %>
@@ -20,8 +19,51 @@
         <td><%= @count %></td>
         <td><%= f.check_box :committee_check, as: :boolean, boolean_style: :inline, :checked => false, label: false, :class => "taskCheckbox", :onChange => "javascript: if($('.taskCheckbox')[#{@index}].checked){if(sure()){$(this.form).submit();}else{$('.taskCheckbox')[#{@index}].checked = false;}};" %>
         <td><%= nominee.name %></td>
-        <td><%= nominee.statement %></td>
-        <td><%= nominee.cv %></td>
+        <td>
+          <!-- Button trigger modal -->
+         <a href="#myModal<%= nominee.id%>" role="button" class="btn" data-toggle="modal">View Details</a>          <!-- Modal -->
+            
+            <div class="modal fade" id="myModal<%= nominee.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h3 class="modal-title" id="myModalLabel">Details for:  <%= nominee.name %></h3>
+                  </div><br>
+                  <div class="container-fluid" align="justify">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <p>
+                          <strong>Nominee Mail:</strong>
+                          <%= nominee.mail %>
+                        </p>
+                      </div>
+                    <br>  
+                    </div>
+                    <div class="row">  
+                      <div class="col-md-12">
+                        <p><strong>Nominee Statement:</strong></p>
+                        <textarea id="statement" class="form-control" rows="5">
+                          <%= nominee.statement %>
+                        </textarea>
+                      </div>
+                    </div>  
+                    <br>
+                    <div class="row">  
+                      <div class="col-md-12">
+                        <p><strong>Nominee Curriculum Vitae:</strong></p>
+                        <textarea id="cv" class="form-control" rows="20">
+                          <%= nominee.cv %>
+                        </textarea>
+                      </div>
+                    </div>
+                    <br>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+        </td>
       <% end %>
       </tr>
       <script type="text/javascript">
@@ -34,5 +76,6 @@
     </table>
   </div>
 </div>
+
 
 
