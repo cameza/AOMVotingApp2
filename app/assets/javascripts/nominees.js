@@ -1,5 +1,5 @@
 var main = $(function () {
-	$("#collapsed").hide();
+	$(".jumbotron").hide();
 	$(".modalTrigger").click(function() {
 		var id = $(this).data('id');
 		alert(id);
