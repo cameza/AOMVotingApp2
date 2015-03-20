@@ -5,23 +5,26 @@
       <thead>
         <tr>
           <th>#</th>
-          <th>Approved</th>
+          <th>Approve</th>
           <th>Nominee Name</th>
           <th>Supporting Documents</th>
         </tr>
       </thead>
-      <% @count = 0 %>
+      <% @count = 0 %> <!-- This count is to enumerate each row of the table -->
+      <% @nominees = @nominees.order("name") %>
+      <!-- Loop through the nominees table to display each one in a different row  -->
       <% @nominees.each do |nominee| %>
       <tr>
       <% @count = @count + 1 %>
+      <!-- @index helps to keep track of the checkbox id within the array of checkboxes -->
       <% @index = @count - 1 %>
       <%= form_for(nominee, id: 'checkbox_form', remote: true, :html => {:multipart => true, :class => 'form-inline'}) do |f| %>
-        <td><%= @count %></td>
+        <td class="td"><%= @count %></td>
         <td><%= f.check_box :committee_check, as: :boolean, boolean_style: :inline, :checked => false, label: false, :class => "taskCheckbox", :onChange => "javascript: if($('.taskCheckbox')[#{@index}].checked){if(sure()){$(this.form).submit();}else{$('.taskCheckbox')[#{@index}].checked = false;}};" %>
-        <td><%= nominee.name %></td>
+        <td class="td"><%= nominee.name %></td>
         <td>
           <!-- Button trigger modal -->
-         <a href="#myModal<%= nominee.id%>" role="button" class="btn" data-toggle="modal">View Details</a>          <!-- Modal -->
+         <a href="#myModal<%= nominee.id%>" role="button" class="center" data-toggle="modal">View Details</a>          <!-- Modal -->
             
             <div class="modal fade" id="myModal<%= nominee.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
               <div class="modal-dialog">

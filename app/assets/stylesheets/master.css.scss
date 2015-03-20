@@ -19,10 +19,27 @@
 #nomineeTable {
     
 }
-td {
+.jumbotron h3 {
+    text-decoration: underline;
+}
+.jumbotron h4 {
+    text-align: justify;
+    font-weight: lighter;
+}
+
+.td, a {
     text-align: left;
     font-size: 20px;
     font-family: 'Open Sans', sans-serif;
+}
+.center {
+    text-align: center;
+    font-size: 20px;
+    font-family: 'Open Sans', sans-serif;
+}
+.center:hover {
+    color: #5cb85c;
+    background-color: #eee;
 }
 th {
     text-align: center;

@@ -1,27 +1,38 @@
 
 <h2 id="title">Listing nominees</h2>
-
-<div class="tab-content">
-    <div class="container-fluid" id="about">
-              <table class"table table-striped table-bordered table-condensed">
+<div class="container-fluid" id="box">
+  <div class="table-responsive">
+    <table class="table table-hover" id="allNomineesTable">
                 <thead>
                   <tr>
                     <th colspan="1">Mail</th>
                     <th colspan="1">Name</th>
                     <th colspan="1">Cv</th>
                     <th colspan="1">Statement</th>
-                    <th colspan="1">Committee check</th>
+                    <th colspan="1">Com.Check</th>
+                    <th colspan="1">Com.Count</th>
+                    <th colspan="1">Chairman Check</th>
                   </tr>
                 </thead>
                 <tbody>
+                <% @nominees = @nominees.order("committee_check_count DESC") %>
                   <% @nominees.each do |nominee| %>
                     <%= simple_form_for(nominee, :html => {:multipart => true, :class => '.form-inline'}) do |f| %>
                       <tr>
                         <td><%= nominee.mail %></td>
                         <td><%= nominee.name %></td>
-                        <td><%= nominee.cv %></td>
-                        <td><%= nominee.statement %></td>
+                        <td> 
+                          <textarea id="cv" class="form-control" rows="1">
+                              <%= nominee.cv %>
+                          </textarea></td>
+                        <td>
+                          <textarea id="cv" class="form-control" rows="1">
+                              <%= nominee.statement %>
+                          </textarea></td>
+                        </td>
                         <td><%= nominee.committee_check %></td>
+                        <td><%= nominee.committee_check_count %></td>
+                        <td><%= nominee.chairman_check %></td>
                         <td><%= link_to 'Show', nominee %></td>
                         <td><%= link_to 'Edit', edit_nominee_path(nominee) %></td>
                         <td><%= link_to 'Destroy', nominee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
