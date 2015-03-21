@@ -1,10 +1,13 @@
 AOMVotingApp2::Application.routes.draw do
+  resources :votes
+
   resources :members
 
   resources :nominees
   root 'nominees#index'
   get '/candidate_selection' => 'nominees#candidate_selection'
   get '/chairman_selection' => 'nominees#chairman_selection'
+  get '/fellows_vote' => 'nominees#fellows_vote'
 
   
   # The priority is based upon order of creation: first created -> highest priority.

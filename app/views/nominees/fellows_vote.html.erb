@@ -1,0 +1,102 @@
+<h2 id="title">Fellows Vote</h2><br>
+<div class="container-fluid" id="box">
+  <div class="jumbotron">
+    <button type="button" id="jumboclose" class="close" aria-hidden="true">&times; dismiss</button>
+    <h3>Notes:</h3>
+    <h4>1. To confirm a nominee into the final stage please click the checkbox mathing her/his name. A message will pop asking you to confirm that selection. </h4>
+    <h4>2. # Pre-Approvals corresponds to the number of committe members that approved that specific nominee</h4>
+  </div>
+  <div class="container-fluid" id="collapsed">
+    <button type="button" id="jumboclose" class="close" aria-hidden="true">
+    <span class="caret"></span>Notes</button>
+  </div><br>
+  <div class="table-responsive">
+    <table class="table table-hover" id="nomineeTable">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Nominee Name</th>
+          <th>Supporting Documents</th>
+          <th>Confirmed</th>
+          <th>Not Confirmed</th>
+          <th>Abstained</th>
+        </tr>
+      </thead>
+      <% @count = 0 %> <!-- This count is to enumerate each row of the table -->
+      <% @nominees = @nominees.order("name") %>
+      <!-- Loop through the nominees table to display each one in a different row  -->
+      <% @nominees.each do |nominee| %>
+      <!-- Since we at this stage only the nominees preselected by the committe have advanced
+            then we must check that only nominees with committee_check == true are shown -->
+        <% if nominee.committee_check %>
+          <tr>
+          <% @count = @count + 1 %>
+          <!-- @index helps to keep track of the checkbox id within the array of checkboxes -->
+          <% @index = @count - 1 %>
+            <td class="td"><%= @count %></td>
+            <td class="td"><%= nominee.name %></td>
+            <td class="td">
+                <!-- Button trigger modal -->
+               <a href="#myModal<%= nominee.id%>" role="button" class="center" data-toggle="modal">View Details</a>          <!-- Modal -->
+                  <div class="modal fade" id="myModal<%= nominee.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                          <h3 class="modal-title" id="myModalLabel">Details for:  <%= nominee.name %></h3>
+                        </div><br>
+                        <div class="container-fluid" align="justify">
+                          <div class="row">
+                            <div class="col-md-6">
+                              <p>
+                                <strong>Nominee Mail:</strong>
+                                <%= nominee.mail %>
+                              </p>
+                            </div>
+                          <br>  
+                          </div>
+                          <div class="row">  
+                            <div class="col-md-12">
+                              <p><strong>Nominee Statement:</strong></p>
+                              <textarea id="statement" class="form-control" rows="5">
+                                <%= nominee.statement %>
+                              </textarea>
+                            </div>
+                          </div>  
+                          <br>
+                          <div class="row">  
+                            <div class="col-md-12">
+                              <p><strong>Nominee Curriculum Vitae:</strong></p>
+                              <textarea id="cv" class="form-control" rows="20">
+                                <%= nominee.cv %>
+                              </textarea>
+                            </div>
+                          </div>
+                          <br>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </td>
+            <!-- End of the modal-->
+            
+              <% @votes.each do |vote| %>
+                <td><%= radio_button_tag "#{nominee.id}", vote.id, nominee.vote_id == vote.id %></td> 
+              <% end %> <!-- End of the form -->
+            
+          </tr>
+        <% end %> <!-- End of the if -->
+      <!-- This java script asks for confirmation when checking/submitting the approval of a nominee -->
+      
+      <% end %> <!-- End of for -->
+    </table>
+  </div>
+</div>
+<script type="text/javascript">
+  var sure = function() {
+    var reply = confirm("Are you sure you want to approve this nominee?");
+    if (reply) {return true;}
+  };
+</script>
+
+

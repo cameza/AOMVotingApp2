@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150316015106) do
+ActiveRecord::Schema.define(version: 20150321040523) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,13 @@ ActiveRecord::Schema.define(version: 20150316015106) do
     t.integer  "member_id"
     t.string   "nominator_mail"
     t.integer  "committee_check_count"
+    t.integer  "vote_id"
+  end
+
+  create_table "votes", force: true do |t|
+    t.string   "vote_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

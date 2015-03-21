@@ -15,6 +15,12 @@ class NomineesController < ApplicationController
     @nominees = Nominee.all
   end
 
+  def fellows_vote
+    @nominees = Nominee.all
+    @votes = Vote.all
+  end
+
+
   # GET /nominees/1
   # GET /nominees/1.json
   def show
