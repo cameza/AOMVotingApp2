@@ -4,3 +4,6 @@
 
 <%= link_to 'Show', @member %> |
 <%= link_to 'Back', members_path %>
+<% @votes.each do |vote| %>
+                <td><%= radio_button_tag "#{nominee.id}", vote.id, nominee.vote_id == vote.id  %></td> 
+              <% end %> <!-- End of the form -->

@@ -17,6 +17,17 @@ var main = $(function () {
 		$("#collapsed").hide();
 		$(".jumbotron").show();
 	});
+
+	$('.voteRadioBut').click(function() {
+			alert("changed");
+			var value = $(this)[0]["value"];
+			console.log(value);
+	});
+
+	$('.btn').click(function() {
+		$('.form-inline').submit();
+		alert("Thank you! Your vote was submitted.");
+	})
 });
 
 $(document).ready(main);

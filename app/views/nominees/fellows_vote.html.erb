@@ -79,17 +79,19 @@
                   </div>
             </td>
             <!-- End of the modal-->
-            
-              <% @votes.each do |vote| %>
-                <td><%= radio_button_tag "#{nominee.id}", vote.id, nominee.vote_id == vote.id %></td> 
-              <% end %> <!-- End of the form -->
-            
+            <%= bootstrap_form_for nominee, :action => 'fellows_vote', layout: :inline, remote: true do |f| %>
+              <%= f.form_group :vote_id, hide_label: true do %>
+                <td><%= f.radio_button :vote_id, 1, checked: false %></td>
+                <td><%= f.radio_button :vote_id, 2, checked: false %></td>
+                <td><%= f.radio_button :vote_id, 3, checked: false %></td>
+                <% end %>
+              <td><%= f.submit "Vote", :class => "btn btn-success", :id => "vote" %></td>
+            <% end %>
           </tr>
         <% end %> <!-- End of the if -->
-      <!-- This java script asks for confirmation when checking/submitting the approval of a nominee -->
-      
       <% end %> <!-- End of for -->
     </table>
+    <%= submit_tag "Vote", :class => "btn btn-success", :id => "vote" %>
   </div>
 </div>
 <script type="text/javascript">

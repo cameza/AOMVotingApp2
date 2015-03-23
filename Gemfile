@@ -21,6 +21,9 @@ gem 'autoprefixer-rails'
 # Use simple_form for a form that uses bootstrap
 gem 'simple_form'
 
+# Add the simple form
+gem 'bootstrap_form'
+
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 

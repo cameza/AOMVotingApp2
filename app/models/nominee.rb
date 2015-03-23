@@ -1,6 +1,6 @@
 class Nominee < ActiveRecord::Base
 	belongs_to :member
-	has_one :vote, foreign_key: "vote_id"
+	has_many :votes, foreign_key: "vote_id"
 
 	validates :mail, :name, :cv, :statement, :nominator_mail, presence: true
 	validates_format_of :mail, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, message: "doesn't look like an email address" 

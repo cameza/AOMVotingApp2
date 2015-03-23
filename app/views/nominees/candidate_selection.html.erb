@@ -21,6 +21,7 @@
       <%= form_for(nominee, id: 'checkbox_form', remote: true, :html => {:multipart => true, :class => 'form-inline'}) do |f| %>
         <td class="td"><%= @count %></td>
         <td><%= f.check_box :committee_check, as: :boolean, boolean_style: :inline, :checked => false, label: false, :class => "taskCheckbox", :onChange => "javascript: if($('.taskCheckbox')[#{@index}].checked){if(sure()){$(this.form).submit();}else{$('.taskCheckbox')[#{@index}].checked = false;}};" %>
+        </td>
         <td class="td"><%= nominee.name %></td>
         <td>
           <!-- Button trigger modal -->
