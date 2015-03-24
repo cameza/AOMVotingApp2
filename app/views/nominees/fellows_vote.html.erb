@@ -2,21 +2,32 @@
 <div class="container-fluid" id="box">
   <div class="jumbotron">
     <button type="button" id="jumboclose" class="close" aria-hidden="true">&times; dismiss</button>
-    <h3>Notes:</h3>
-    <h4>1. To confirm a nominee into the final stage please click the checkbox mathing her/his name. A message will pop asking you to confirm that selection. </h4>
-    <h4>2. # Pre-Approvals corresponds to the number of committe members that approved that specific nominee</h4>
+    <h3>To vote for a nominee:</h3>
+    <h4>1. Type your email and click the verify button. If your email is registered the voting list will be displayed.</h4>
+    <h4>2. Select the correponding option in front of her/his name.</h4>
+    <h4>3. Click the "Submit Vote" button at the bottom of the form.</h4>
   </div>
   <div class="container-fluid" id="collapsed">
     <button type="button" id="jumboclose" class="close" aria-hidden="true">
     <span class="caret"></span>Notes</button>
   </div><br>
-  <div class="table-responsive">
-    <table class="table table-hover" id="nomineeTable">
+  <div class="valid_member">
+    <div class="center">
+      <%= bootstrap_form_tag :action => 'valid_member', remote: true do |f| %>
+          <%= f.email_field :email, label: 'Enter email: ', hide_label: true, layout: :horizontal, control_col: "col-sm-10 col-md-10", placeholder: 'Your email is for validation purpose only' %> 
+          <%= f.submit "Verify", :class => "btn btn-primary btn", :id => "valid_member" %>
+      <% end %>
+    </div>
+  </div>
+  <br>
+  <!-- Display if valid -->
+  <div id="votingTable" class="table-responsive">
+    <table class="table table-hover" id="votingTable">
       <thead>
         <tr>
           <th>#</th>
-          <th>Nominee Name</th>
-          <th>Supporting Documents</th>
+          <th>Nominee</th>
+          <th>Documents</th>
           <th>Confirmed</th>
           <th>Not Confirmed</th>
           <th>Abstained</th>
@@ -81,17 +92,20 @@
             <!-- End of the modal-->
             <%= bootstrap_form_for nominee, :action => 'fellows_vote', layout: :inline, remote: true do |f| %>
               <%= f.form_group :vote_id, hide_label: true do %>
-                <td><%= f.radio_button :vote_id, 1, checked: false %></td>
-                <td><%= f.radio_button :vote_id, 2, checked: false %></td>
-                <td><%= f.radio_button :vote_id, 3, checked: false %></td>
+                <td class="radioBut"><%= f.radio_button :vote_id, 1, checked: false %></td>
+                <td class="radioBut"><%= f.radio_button :vote_id, 2, checked: false %></td>
+                <td class="radioBut"><%= f.radio_button :vote_id, 3, checked: true %></td>
                 <% end %>
-              <td><%= f.submit "Vote", :class => "btn btn-success", :id => "vote" %></td>
+              
             <% end %>
           </tr>
         <% end %> <!-- End of the if -->
       <% end %> <!-- End of for -->
-    </table>
-    <%= submit_tag "Vote", :class => "btn btn-success", :id => "vote" %>
+    </table><br>
+    <div class="center">
+      <%= submit_tag "Submit Vote", :class => "btn btn-primary btn-lg", :id => "vote" %>
+    </div>
+    
   </div>
 </div>
 <script type="text/javascript">

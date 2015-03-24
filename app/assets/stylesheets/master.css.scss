@@ -26,7 +26,14 @@
     text-align: justify;
     font-weight: lighter;
 }
-
+.radioBut {
+    padding-left: 50px;
+}
+.radio input {
+   display: inline-block;
+    vertical-align: top;
+    padding-left: 30%;
+}
 .td, a {
     text-align: left;
     font-size: 20px;
@@ -39,7 +46,7 @@
 }
 .center:hover {
     color: #5cb85c;
-    background-color: #eee;
+    
 }
 th {
     text-align: center;

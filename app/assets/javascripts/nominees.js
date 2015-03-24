@@ -24,10 +24,12 @@ var main = $(function () {
 			console.log(value);
 	});
 
-	$('.btn').click(function() {
+	$('#vote').click(function() {
 		$('.form-inline').submit();
 		alert("Thank you! Your vote was submitted.");
 	})
+
+	$('#votingTable').hide();
 });
 
 $(document).ready(main);

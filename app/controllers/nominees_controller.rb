@@ -19,27 +19,18 @@ class NomineesController < ApplicationController
     @nominees = Nominee.all
     @votes = Vote.all
     @members = Member.all
+    @isValid = false
 
-    if params[:nominee] == nil
-      puts "is empty"
-    end
-    @theVote = ""
-    if !params[:vote_id].to_s.empty? && params[:vote_id]!= nil
-      @theVote = params[:vote_id].to_s.split("_")
-      @nomID = @theVote[0]
-      @voteType = @theVote[1]
-      puts "vote id is #{@theVote}"
-      puts @nomID
-      puts @voteType
+    puts "here #{params["email"]}"
+    mail = params["email"]
 
-      # Update the vote for the current Nominee
-      if @voteType == "1"
-        puts "update type 1 vote"
-
+    @members.each do |member|
+      puts member.mail
+      if member.mail.eql?(mail)
+        @isValid = true
+        puts "----------------true--------------"
       end
-
     end
-
   end
 
   def get_nom_id(voteid) 

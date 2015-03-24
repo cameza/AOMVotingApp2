@@ -3,3 +3,7 @@ $('.voteRadioBut').click(function() {
 		var value = $(this)[0]["value"];
 		console.log(value);
 });
+$('.table-responsive').hide();
+if(<%= @isValid %>){
+	$('.table-responsive').show();
+};

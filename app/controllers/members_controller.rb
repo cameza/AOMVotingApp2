@@ -1,6 +1,15 @@
 class MembersController < ApplicationController
   before_action :set_member, only: [:show, :edit, :update, :destroy]
 
+  # Currently this is not being used
+  def valid_member
+    @member_list = Array.new
+    Member.each do |member|
+      @member_list.push member.mail
+    end
+    puts "im here"
+  end
+
   # GET /members
   # GET /members.json
   def index
