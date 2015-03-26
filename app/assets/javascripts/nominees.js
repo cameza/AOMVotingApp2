@@ -31,6 +31,9 @@ var main = $(function () {
 
 	$('#votingTable').hide();
 
+	jQuery(window).load (function () { 
+      jQuery('#DIV').removeClass('#allNomTable')
+  	});
 	$('#allNomTable').hide();
 
 	$('#year').click(function() {

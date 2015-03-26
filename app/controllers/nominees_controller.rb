@@ -25,7 +25,6 @@ class NomineesController < ApplicationController
     mail = params["email"]
 
     @members.each do |member|
-      puts member.mail
       if member.mail.eql?(mail)
         @isValid = true
         puts "----------------true--------------"
