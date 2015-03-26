@@ -30,6 +30,12 @@ var main = $(function () {
 	})
 
 	$('#votingTable').hide();
+
+	$('#allNomTable').hide();
+
+	$('#year').click(function() {
+		$('#allNomTable').show();
+	})
 });
 
 $(document).ready(main);
