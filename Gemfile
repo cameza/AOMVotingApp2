@@ -42,6 +42,7 @@ gem 'newrelic_rpm'
 # Add ckeditor to add formatting options to CV and Statement
 gem 'ckeditor'
 
+gem 'non-stupid-digest-assets', '~> 1.0.4'
 
 
 group :doc do
