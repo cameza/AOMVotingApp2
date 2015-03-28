@@ -39,6 +39,11 @@ gem 'jbuilder', '~> 1.2'
 # Add NewRelic add-on for monitoring
 gem 'newrelic_rpm'
 
+# Add ckeditor to add formatting options to CV and Statement
+gem 'ckeditor'
+
+
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

@@ -28,7 +28,7 @@
          <a href="#myModal<%= nominee.id%>" role="button" class="center" data-toggle="modal">View Details</a>          <!-- Modal -->
             
             <div class="modal fade" id="myModal<%= nominee.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
+              <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -47,7 +47,7 @@
                     <div class="row">  
                       <div class="col-md-12">
                         <p><strong>Nominee Statement:</strong></p>
-                        <textarea id="statement" class="form-control" rows="5">
+                        <textarea id="statement" class="ckeditor" rows="5">
                           <%= nominee.statement %>
                         </textarea>
                       </div>
@@ -56,7 +56,7 @@
                     <div class="row">  
                       <div class="col-md-12">
                         <p><strong>Nominee Curriculum Vitae:</strong></p>
-                        <textarea id="cv" class="form-control" rows="20">
+                        <textarea id="cv" class="ckeditor" rows="20">
                           <%= nominee.cv %>
                         </textarea>
                       </div>
