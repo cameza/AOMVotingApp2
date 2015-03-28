@@ -10,10 +10,10 @@
     <%= f.input :mail, as: :email, label: 'Her/His email is:', placeholder: 'janedoe@mail.com' %><br>
   </div>
   <div class="field">
-    <%= f.input :cv, as: :ckeditor, label: 'Paste nominee\'s CV here:', placeholder: 'Copy the CV text and paste it here.', :input_html => { :ckeditor => { :toolbar => 'mini'} } %><br>
+    <%= f.input :cv, as: :text, label: 'Paste nominee\'s CV here:', placeholder: 'Copy the CV text and paste it here.' %><br>
   </div>
   <div class="field">
-  <%= f.input :statement, as: :ckeditor, label: 'Paste nominee\'s supporting statement here:', placeholder: 'Type here the statement of purpose for your nomination ', :input_html => { :ckeditor => { :toolbar => 'mini'} } %><br><br>
+  <%= f.input :statement, as: :text, label: 'Paste nominee\'s supporting statement here:', placeholder: 'Type here the statement of purpose for your nomination ' %><br><br>
   </div>
   <div class="myButton">
     <%= f.submit "Submit Nomination", :class => 'btn btn-primary btn-fill'%>
