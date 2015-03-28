@@ -40,7 +40,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'newrelic_rpm'
 
 # Add ckeditor to add formatting options to CV and Statement
-gem 'ckeditor'
+gem 'ckeditor', github: 'galetahub/ckeditor'
 
 gem 'non-stupid-digest-assets', '~> 1.0.4'
 
