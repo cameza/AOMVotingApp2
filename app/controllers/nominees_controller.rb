@@ -7,14 +7,17 @@ class NomineesController < ApplicationController
     @nominees = Nominee.all
   end
 
+  # GET /candidate_selection
   def candidate_selection
     @nominees = Nominee.all
   end
 
+  # GET /chairman_selection
   def chairman_selection
     @nominees = Nominee.all
   end
 
+  # GET/POST /fellows_vote
   def fellows_vote
     # initializers
     @nominees = Nominee.all
@@ -47,12 +50,20 @@ class NomineesController < ApplicationController
     end
   end
 
-  def get_nom_id(voteid) 
-    voteid_array = voteid.to_s.split("_")
-    return voteid_array[0]
+  # GET /results
+  def results
+    @nominees = Nominee.all
+    @votes = Vote.all
+    @members = Member.all
+    @votersCount = 0
+
+    # Get the total number of members who voted
+    @members.each do |member|
+      if member.voted
+        @votersCount += 1
+      end
+    end
   end
-
-
 
   # GET /nominees/1
   # GET /nominees/1.json

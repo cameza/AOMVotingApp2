@@ -1,0 +1,32 @@
+<h2 id="title">Results</h2><br>
+<div class="container-fluid" id="box">
+  <div id="resultsTable" class="table-responsive">
+    <table class="table table-hover" id="resultsTable">
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Nominee</th>
+          <th># Votes</th>
+        </tr>
+      </thead>
+      <% @count = 0 %>
+      <% @nominees = @nominees.order("Confirmed DESC") %>
+      <!-- Loop through the nominees table to display each one in a different row  -->
+      <% @nominees.each do |nominee| %>
+      <!-- Since we at this stage only the nominees preselected by the committe have advanced
+            then we must check that only nominees with committee_check == true are shown -->
+        <% if nominee.committee_check %>
+          <tr>
+          <% @count = @count + 1 %>
+            <td class="td"><%= @count %></td>
+            <td class="td"><%= nominee.name %></td>
+            <td class="td"><%= nominee.confirmed %></td>
+          </tr>
+        <% end %> <!-- End of the if -->
+      <% end %> <!-- End of for -->
+    </table><br>
+    <div id="totalVotes">
+      <h3 class="bg-success">Total voting members = <%= @votersCount %></h3>
+    </div>
+  </div>
+</div>

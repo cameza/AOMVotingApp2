@@ -13,6 +13,7 @@
                     <th colspan="1">Com.Check</th>
                     <th colspan="1">Com.Count</th>
                     <th colspan="1">Chairman Check</th>
+                    <th colspan="1">Confirmed/th>
                   </tr>
                 </thead>
                 <tbody>
@@ -73,6 +74,7 @@
                         <td><%= nominee.committee_check %></td>
                         <td><%= nominee.committee_check_count %></td>
                         <td><%= nominee.chairman_check %></td>
+                        <td><%= nominee.confirmed %></td>
                         <td><%= link_to 'Show', nominee %></td>
                         <td><%= link_to 'Edit', edit_nominee_path(nominee) %></td>
                         <td><%= link_to 'Destroy', nominee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
