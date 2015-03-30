@@ -30,6 +30,8 @@ var main = $(function () {
 	})
 
 	$('#votingTable').hide();
+	$('.bg-danger').hide();
+	$('.bg-warning').hide();
 
 	jQuery(window).load (function () { 
       jQuery('#DIV').removeClass('#allNomTable')

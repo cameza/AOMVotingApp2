@@ -20,8 +20,19 @@
     </div>
   </div>
   <br>
+  <!-- Display if invalid -->
+  <div id="invalid" class="center-block">
+    <p class="bg-danger">Your email does not appear on our records. Contact the administrators</p>
+  </div>
+  <!-- Display if voted already -->
+  <div id="voted" class="center-block">
+    <p class="bg-warning">Warning: You can only vote once.</p>
+  </div>
   <!-- Display if valid -->
   <div id="votingTable" class="table-responsive">
+    <div class="center-block">
+      <p class="bg-success">Your email was succesfully validated.</p>
+    </div>
     <table class="table table-hover" id="votingTable">
       <thead>
         <tr>

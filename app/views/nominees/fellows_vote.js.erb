@@ -1,9 +1,19 @@
+/* Not being used
 $('.voteRadioBut').click(function() {
 		alert("changed");
 		var value = $(this)[0]["value"];
 		console.log(value);
-});
-$('.table-responsive').hide();
+});*/
+
+// Check it the email is valid and if the member has voted already to display
+// the voting table
 if(<%= @isValid %>){
-	$('.table-responsive').show();
+	if(<%= @voted %>){
+		$('.bg-warning').show();
+	}else {
+		$('.table-responsive').show();
+	}
+}
+else{
+	$('.bg-danger').show();
 };

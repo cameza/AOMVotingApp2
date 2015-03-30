@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150323202920) do
+ActiveRecord::Schema.define(version: 20150330052451) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20150323202920) do
     t.string   "mail"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "voted"
   end
 
   create_table "nominees", force: true do |t|

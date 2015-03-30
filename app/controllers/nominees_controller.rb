@@ -16,18 +16,33 @@ class NomineesController < ApplicationController
   end
 
   def fellows_vote
+    # initializers
     @nominees = Nominee.all
     @votes = Vote.all
     @members = Member.all
     @isValid = false
+    @voted = false
 
-    puts "here #{params["email"]}"
-    mail = params["email"]
+    puts "here #{params["email"]}" #debugging
+    mail = params["email"] #email inputted by the user
 
+    # visit every member to see if the email mathes a member
     @members.each do |member|
+      # Case in which the email is validated
       if member.mail.eql?(mail)
-        @isValid = true
-        puts "----------------true--------------"
+        # Email was validated and member has not voted yet
+        # The email is added to the @votedArray
+        puts "------------- mail is valid --------------"
+        if member.voted == nil
+          @isValid = true
+          member.update(:voted => true)
+          puts "------------- mail hasnt voted --------------"
+        else
+          # Email was validated but member had already voted
+          @isValid = true
+          @voted = true
+          puts "------------- mail has voted --------------"
+        end
       end
     end
   end

@@ -1,5 +1,11 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600,300);
 
+.bg-danger, .bg-success, .bg-warning {
+    height: 30px;
+    text-align: center;
+    padding-top: 5px;
+}
+
 #headers p {
     font-weight: bold;
 }
