@@ -39,8 +39,6 @@ gem 'jbuilder', '~> 1.2'
 # Add NewRelic add-on for monitoring
 gem 'newrelic_rpm'
 
-gem 'bootstrap-wysihtml5-rails', '~> 0.3.3.6'
-
 gem 'non-stupid-digest-assets', '~> 1.0.4'
 
 
