@@ -86,9 +86,7 @@ Although not styled yet, you can add a member by visiting <a href="http://aomvot
 
 <ol>
 <li>Send the link to the site <a href="http://aomvotingapp.herokuapp.com/candidate_selection">Candidate Selection</a> <strong>ONLY to the committee members</strong>.</li>
-<li>This view is using AJAX functionality for each checkbox so that when a checkbox is clicked a javascript function will do the following:</li>
-<li>confirm (pop up) if the nominee really wants to be approved</li>
-<li>if confirmed then the js will submit the data for that particular nominee. 
+<li>This view is using AJAX functionality for each checkbox so that when a checkbox is clicked a javascript function will do the following: - confirm (pop up) if the nominee really wants to be approved - if confirmed then the js will submit the data for that particular nominee. 
 There is no need for a submit button here, as soon as a nominee is checked his information will be updated.</li>
 <li>Monitor the site <a href="http://aomvotingapp.herokuapp.com/chairman_selection">Chairman Selection</a> as it should be automatically populated after a nominee is approved by a committee member. </li>
 </ol>
@@ -111,9 +109,7 @@ There is no need for a submit button here, as soon as a nominee is checked his i
 <li>Each Fellow should provide their registered email for verification. Only if the email is verified and they haven't voted already the list with all the final nominees will be displayed. </li>
 <li>Note that if a member verifies his email the system will mark his email as voted, so the member MUST complete and submit his votes within the same session. </li>
 <li>By default each nominee appears with the "Abstained" option selected. Fellows should give a vote for every nominee before submitting. So if they submit without going over all of the nominees then his vote for those nominees will be the default (Abstained).</li>
-<li>The submit button is linked to a javascript function that does the following:</li>
-<li>Alerts the user that the vote was submitted</li>
-<li>submits the form using AJAX</li>
+<li>The submit button is linked to a javascript function that does the following: - Alerts the user that the vote was submitted - submits the form using AJAX</li>
 <li>By this time monitor the <a href="http://aomvotingapp.herokuapp.com/results">Results</a> site as it should populate with the first vote. </li>
 </ol>
 
@@ -124,15 +120,35 @@ There is no need for a submit button here, as soon as a nominee is checked his i
 <li>Once the voting is closed distribute the link to the <a href="http://aomvotingapp.herokuapp.com/results">Results</a> site <strong>ONLY to the Chairman</strong>.</li>
 <li>Verify that each row should add the same number and it should be the same number if a column is added. The sum of a row or a column should also be the same as the number of total voting members in the bottom of the site. 
 ***
-## Models
-The App contains 3 models:</li>
-<li>members: A table with 5 columns: id, mail, created_at, updated_at, voted.</li>
+***</li>
+</ol>
+
+<hr>
+
+<h1>
+<a id="more-about-the-mvc-pattern" class="anchor" href="#more-about-the-mvc-pattern" aria-hidden="true"><span class="octicon octicon-link"></span></a>More about the MVC pattern</h1>
+
+<h2>
+<a id="models" class="anchor" href="#models" aria-hidden="true"><span class="octicon octicon-link"></span></a>Models</h2>
+
+<p>The App contains 3 models:
+members: A table with 5 columns: id, mail, created_at, updated_at, voted.</p>
+
+<ul>
 <li>mail: is the mail address of a member. At the time there are 193 mail addresses registered. To include a new address just go to <em>db/migrate/seeds.rb</em> and include the line <code>Member.create(:mail =&gt; 'type here the new email address')</code>. Save and make sure to run in the console <code>rake db:seeds</code> and then <code>rake db:migrate</code>. Finally run the same code in Heroku by typing <code>heroku run rake db:seeds</code> and <code>heroku run rake db:migrate</code>.</li>
-<li><p>voted: of boolean type to keep track if the member already voted. </p></li>
-<li><p>votes: A table with 4 columns: vote_id, vote_type, created_at and updated_at.</p></li>
+<li>voted: of boolean type to keep track if the member already voted. </li>
+</ul>
+
+<p>votes: A table with 4 columns: vote_id, vote_type, created_at and updated_at.</p>
+
+<ul>
 <li>vote_id: Type integer. There are 3 votes id (1, 2 and 3). Each id is associated with one type of vote.</li>
-<li><p>vote_type: Type string. The 3 different types are: "Confirmed", "Not Confirmed" and "Abstained".</p></li>
-<li><p>nominees: A table where each row is a different nominee. All of the app relies on this model. The columns (attributes) are:</p></li>
+<li>vote_type: Type string. The 3 different types are: "Confirmed", "Not Confirmed" and "Abstained".</li>
+</ul>
+
+<p>nominees: A table where each row is a different nominee. All of the app relies on this model. The columns (attributes) are:</p>
+
+<ul>
 <li>mail: Type String. Corresponds to the email of the nominee.</li>
 <li>name: Type String. Corresponds to the name of the nominee. </li>
 <li>cv: Type Text. Corresponds to the cv of the nominee. For the future this might be wanted to replaced by a pdf.</li>
@@ -146,7 +162,7 @@ The App contains 3 models:</li>
 <li>nominator_mail: Type String. Records the fellow who nominated this candidate. Although this information is not displayed within any of the user views it might be helpful in case the candidate is selected as Fellow member. </li>
 <li>committee_check_count: Type Integer. Keeps the count of the number of times that this nominee has been approved within the candidate_selection view.</li>
 <li>vote_id: Type Integer. Records the type of the last vote received by each candidate. It is used to feed the columns confirmed, not_confirmed and abstained.</li>
-</ol>
+</ul>
 
 <hr>
 
