@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>Aomvotingapp2 by cameza</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+          <h1>Aomvotingapp2</h1>
+          <h2></h2>
+        </header>
+
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/cameza/AOMVotingApp2/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/cameza/AOMVotingApp2/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/cameza/AOMVotingApp2" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+
+        <hr>
+
+        <section id="main_content">
+          <p>== README AOM Voting App v1.0 (2015-03-31)</p>
+
+<p>This README describes the basic technical information about the AOM Voting App v1. 
+Ruby version: ruby 2.0.0p353 (2013-11-22 revision 43784)
+Rails version: Rails 4.0.13
+Database: PostgresSQL</p>
+
+<p>This application is built using Ruby on Rails and deployed to production using Heroku and PostgreSQL database. It consists of 6 views accessible to the users and 1 view accessible only for the administrator. </p>
+
+<p><strong>The 6 user views are:</strong>
+/nominees/new
+/candidate_selection
+/chairman_selection
+/fellows_vote
+/results</p>
+
+<p><strong>The administration view is:</strong>
+/nominees
+To display the total content of this view you need to click in the 2015 link. This is mainly to prevent unauthorized access to other users. In the future a username/password may be incorporated to make it really secure. </p>
+
+<hr>
+
+<h2>
+<a id="models" class="anchor" href="#models" aria-hidden="true"><span class="octicon octicon-link"></span></a>Models</h2>
+
+<p>The App contains 3 models:
+1. members: A table with 5 columns: id, mail, created_at, updated_at, voted.</p>
+
+<ul>
+<li>mail: is the mail address of a member. At the time there are 193 mail addresses registered. To include a new address just go to <em>db/migrate/seeds.rb</em> and include the line <code>Member.create(:mail =&gt; 'type here the new email address')</code>. Save and make sure to run in the console <code>rake db:seeds</code> and then <code>rake db:migrate</code>. Finally run the same code in Heroku by typing <code>heroku run rake db:seeds</code> and <code>heroku run rake db:migrate</code>.</li>
+<li><p>voted: of boolean type to keep track if the member already voted. </p></li>
+</ul>
+
+<ol>
+<li>votes: A table with 4 columns: vote_id, vote_type, created_at and updated_at.</li>
+<li>vote_id: Type integer. There are 3 votes id (1, 2 and 3). Each id is associated with one type of vote.</li>
+<li><p>vote_type: Type string. The 3 different types are: "Confirmed", "Not Confirmed" and "Abstained".</p></li>
+<li><p>nominees: A table where each row is a different nominee. All of the app relies on this model. The columns (attributes) are:</p></li>
+<li>mail: Type String. Corresponds to the email of the nominee.</li>
+<li>name: Type String. Corresponds to the name of the nominee. </li>
+<li>cv: Type Text. Corresponds to the cv of the nominee. For the future this might be wanted to replaced by a pdf.</li>
+<li>statement: Type Text. Corresponds to the statement of the nominee. For the future this might be wanted to replaced by a pdf.</li>
+<li>committee_check: Type Boolean. This is true once a committee member approves this candidate. Those nominees who have this field as true are displayed in the chairman_selection view.</li>
+<li>chairman_check: Type Boolean. This is true once the Chairman approves this candidate. Those nominees who have this field as true are displayed in the fellows_vote view.</li>
+<li>confirmed: Type Integer. Keeps the count of the number of times that this nominee has been voted as "Confirmed" in the Fellows_vote view.</li>
+<li>not_confirmed: Type Integer. Keeps the count of the number of times that this nominee has been voted as "Not Confirmed" in the Fellows_vote view.</li>
+<li>abstained: Type String. Due to an initialization mistake this is of type String instead of Integer. Therefore it requires to be converted to integer where ever it is used (use method <code>.to_i</code>). Keeps the count of the number of times that this nominee has been voted as "Abstained" in the Fellows_vote view.</li>
+<li>member_id: Type Integer. Unique identifier for each member. Provided automatically by rails. </li>
+<li>nominator_mail: Type String. Records the fellow who nominated this candidate. Although this information is not displayed within any of the user views it might be helpful in case the candidate is selected as Fellow member. </li>
+<li>committee_check_count: Type Integer. Keeps the count of the number of times that this nominee has been approved within the candidate_selection view.</li>
+<li>vote_id: Type Integer. Records the type of the last vote received by each candidate. It is used to feed the columns confirmed, not_confirmed and abstained.</li>
+</ol>
+
+<hr>
+
+<h2>
+<a id="views" class="anchor" href="#views" aria-hidden="true"><span class="octicon octicon-link"></span></a>Views</h2>
+
+<h3>
+<a id="layouts" class="anchor" href="#layouts" aria-hidden="true"><span class="octicon octicon-link"></span></a>Layouts</h3>
+
+<p>The application.html.erb is the basic template or layout for all of the pages in the app. It consists basically of the main container and the logo of AOM. </p>
+
+<h3>
+<a id="members" class="anchor" href="#members" aria-hidden="true"><span class="octicon octicon-link"></span></a>Members</h3>
+
+<p>Following the REST style rails automatically generates views for each model in order to create, update or delete instances for the model. In this case there are views to create a new member, to edit existing members that have been automatically created. This views are working but they have not been styled. </p>
+
+<h3>
+<a id="votes" class="anchor" href="#votes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Votes</h3>
+
+<p>Same as the case for Members</p>
+
+<h3>
+<a id="nominees" class="anchor" href="#nominees" aria-hidden="true"><span class="octicon octicon-link"></span></a>Nominees</h3>
+
+<p>views names in general are related to routes.rb and to the functionality they are performing.
+_form.html.erb is a partial holding the form for a new nominee.It is used in new.html.erb and edit.html.er
+candidate_selection.html.erb
+chairman_selection.html.erb
+edit.html.erb
+fellows_vote.html.erb
+fellows_vote.js.erb is a javascript file that runs when the email verification button is clicked within the fellows_vote page
+index.html.erb corresponds to the main /nominees site
+new.html.erb
+results.html.erb
+show.html.erb displays information about the nominee. It is used after the creation of a nominee. 
+update.js.erb</p>
+
+<hr>
+        </section>
+
+        <footer>
+          Aomvotingapp2 is maintained by <a href="https://github.com/cameza">cameza</a><br>
+          This page was generated by <a href="https://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
+    </div>
+  </body>
+</html>
