@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150330052451) do
+ActiveRecord::Schema.define(version: 20150401032710) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,9 +30,9 @@ ActiveRecord::Schema.define(version: 20150330052451) do
     t.text     "statement"
     t.boolean  "committee_check"
     t.boolean  "chairman_check"
-    t.integer  "confirmed"
-    t.integer  "not_confirmed"
-    t.string   "abstained"
+    t.integer  "confirmed",             default: 0
+    t.integer  "not_confirmed",         default: 0
+    t.string   "abstained",             default: "0"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "member_id"

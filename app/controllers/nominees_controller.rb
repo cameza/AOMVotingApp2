@@ -23,11 +23,12 @@ class NomineesController < ApplicationController
     @nominees = Nominee.all
     @votes = Vote.all
     @members = Member.all
+    # @isValid is used as a flag to identify if the email entered matches one of the Members
     @isValid = false
+    # @voted is used as a flag to know if that member has already voted.
     @voted = false
-
-    puts "here #{params["email"]}" #debugging
-    mail = params["email"] #email inputted by the user
+    #email inputted by the user
+    mail = params["email"] 
 
     # visit every member to see if the email mathes a member
     @members.each do |member|
@@ -102,6 +103,7 @@ class NomineesController < ApplicationController
     
     @nominees = Nominee.all
 
+    # For candidate_selection view. 
     # Update the nominee check count
     @check = "0"
     @check = params[:nominee]["committee_check"].to_i
@@ -117,13 +119,15 @@ class NomineesController < ApplicationController
       puts "check count: #{@nominee.committee_check_count}"
     end
 
-    # Update the nominee vote count
+    # For Fellows_vote view. 
+    # A vote is received. Update the nominee vote count
     @voted = params[:nominee]["vote_id"].to_i
     if @voted > 0
       puts "vote id = #{@voted} and nominee id = #{params[:id]}"
       myNom = Nominee.find_by_id(params[:id].to_i)
       puts "nominee.confirmed = #{myNom}"
-      # Confirmed vote
+      
+      # vote recieved is "Confirmed" type
       if @voted == 1
         if myNom["confirmed"] == nil
           Nominee.update(params[:id].to_i, :confirmed => 1)
@@ -133,7 +137,7 @@ class NomineesController < ApplicationController
         end
       end
 
-      # Not Confirmed vote
+      # vote recieved is "Not Confirmed" type
       if @voted == 2
         if myNom["not_confirmed"] == nil
           Nominee.update(params[:id].to_i, :not_confirmed => 1)
@@ -143,7 +147,7 @@ class NomineesController < ApplicationController
         end
       end
 
-      # Abstained vote - this column is of type string
+      # vote recieved is "Abstained" type - Note: this column is of type string
       if @voted == 3
         if myNom["abstained"] == nil
           Nominee.update(params[:id].to_i, :abstained => 1.to_s)
@@ -164,9 +168,6 @@ class NomineesController < ApplicationController
         format.json { render json: @nominee.errors, status: :unprocessable_entity }
       end
     end
-
-    
-
   end
 
   # DELETE /nominees/1

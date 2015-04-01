@@ -6,7 +6,9 @@
         <tr>
           <th>Rank</th>
           <th>Nominee</th>
-          <th># Votes</th>
+          <th># Confirmed</th>
+          <th># Against</th>
+          <th># Abstained</th>
         </tr>
       </thead>
       <% @count = 0 %>
@@ -20,13 +22,15 @@
           <% @count = @count + 1 %>
             <td class="td"><%= @count %></td>
             <td class="td"><%= nominee.name %></td>
-            <td class="td"><%= nominee.confirmed %></td>
+            <td class="td"><%= nominee.confirmed %><p>(<%= nominee.confirmed*100/@votersCount %>%)</p></td>
+            <td class="td"><%= nominee.not_confirmed %><p>(<%= nominee.not_confirmed*100/@votersCount %>%)</p></td>
+            <td class="td"><%= nominee.abstained %><p>(<%= nominee.abstained.to_i*100/@votersCount %>%)</p></td>
           </tr>
         <% end %> <!-- End of the if -->
       <% end %> <!-- End of for -->
     </table><br>
     <div id="totalVotes">
-      <h3 class="bg-success">Total voting members = <%= @votersCount %></h3>
+      <h3 class="bg-success">Total voting members: <%= @votersCount %> of <%= Member.count %> ( <%= @votersCount*100/Member.count %>% )</h3>
     </div>
   </div>
 </div>
