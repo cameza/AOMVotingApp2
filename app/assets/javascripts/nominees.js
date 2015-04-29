@@ -1,17 +1,16 @@
 var main = $(function () {
 	/* For candidate_selection and chairman_selection*/
 
-	// classes hidden on load
+	//Loads the Notes jumbotron as hidden
 	jQuery(window).load (function () { 
       jQuery('#DIV').removeClass('#allNomTable')
   	});
-  	$(".jumbotron").hide();
+	$('#allNomTable').hide();
+	$('#success.jumbotron').show();
+	$("#note").hide();
 	$('#votingTable').hide();
 	$('.bg-danger').hide();
 	$('.bg-warning').hide();
-	$('#allNomTable').hide();
-
-	
 	// If clicked in the close the jumbotron is closed
 	$("#jumboclose").click(function() {
 		$(".jumbotron").hide();
@@ -32,8 +31,21 @@ var main = $(function () {
         $('#myModal').attr("data-id", id);
         $("#myModal").modal('show');
 	});
-	
-	// For /nominee view. This displays all the nominations when clicked in the 2015
+
+	// Submit voting form for fellows_vote view
+	$('#vote').click(function() {
+		$('.form-inline').submit();
+		alert("Thank you! Your vote was submitted.");
+	});
+
+	// Submit approvals form for candidate_selection view
+	$('#approve').click(function() {
+		$('.form-inline').submit();
+		$('#submitModal').modal('show');
+		$(this).prop("disabled", true);
+		window.location.replace('/success');
+	});
+
 	$('#year').click(function() {
 		$('#allNomTable').show();
 	})

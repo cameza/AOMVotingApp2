@@ -18,9 +18,10 @@
       <% @count = @count + 1 %>
       <!-- @index helps to keep track of the checkbox id within the array of checkboxes -->
       <% @index = @count - 1 %>
-      <%= form_for(nominee, id: 'checkbox_form', remote: true, :html => {:multipart => true, :class => 'form-inline'}) do |f| %>
+      <%= bootstrap_form_for nominee, :action => 'candidate_selection', layout: :inline, remote: true do |f| %>
+    
         <td class="td"><%= @count %></td>
-        <td><%= f.check_box :committee_check, as: :boolean, boolean_style: :inline, :checked => false, label: false, :class => "taskCheckbox", :onChange => "javascript: if($('.taskCheckbox')[#{@index}].checked){if(sure()){$(this.form).submit();}else{$('.taskCheckbox')[#{@index}].checked = false;}};" %>
+        <td><%= f.check_box :committee_check, label: " ", hide_label: true, :checked => false, :class => "taskCheckbox", :onChange => "javascript: if($('.taskCheckbox')[#{@index}].checked){if(!sure()){$('.taskCheckbox')[#{@index}].checked = false;}};" %>
         </td>
         <td class="td"><%= nominee.name %></td>
         <td>
@@ -78,6 +79,19 @@
       </script>
       <% end %>
     </table>
+    <div class="center">
+      <%= submit_tag "Submit Approvals", :class => "btn btn-primary btn-lg", :id => "approve", :data => {:disable_with => "Saving..."} %>
+    </div>
+    <div class="modal fade" id="submitModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <h3 style="text-align: center;">...Submitting your approvals.</h3>
+            <h3 style="text-align: center;">Please wait.</h3>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
   </div>
 </div>
 

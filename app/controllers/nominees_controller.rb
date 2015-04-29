@@ -66,6 +66,9 @@ class NomineesController < ApplicationController
     end
   end
 
+  def success
+  end
+
   # GET /nominees/1
   # GET /nominees/1.json
   def show
@@ -117,7 +120,16 @@ class NomineesController < ApplicationController
         @nominee.committee_check_count += 1
       end
       puts "check count: #{@nominee.committee_check_count}"
+    else 
+      # If this candidate was NOT checked and it was previously approved then keep its value in true
+      puts "------------@check = 0-------#{@check}"
+      if @nominee.committee_check
+        puts "------------@check = 0-------#{@check}"
+        params[:nominee]["committee_check"] = "1"
+        puts "------------@check = 0-------#{params[:nominee]["committee_check"]}"
+      end
     end
+   
 
     # For Fellows_vote view. 
     # A vote is received. Update the nominee vote count
@@ -162,7 +174,6 @@ class NomineesController < ApplicationController
       if @nominee.update(nominee_params)
         format.html { redirect_to @nominee, notice: 'Nominee was successfully updated.' }
         format.json { head :no_content }
-        format.js {}
       else
         format.html { render action: 'edit' }
         format.json { render json: @nominee.errors, status: :unprocessable_entity }

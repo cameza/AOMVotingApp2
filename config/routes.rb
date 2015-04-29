@@ -10,6 +10,7 @@ AOMVotingApp2::Application.routes.draw do
     get '/fellows_vote' => 'nominees#fellows_vote'
     post '/fellows_vote' => 'nominees#fellows_vote'
     get '/results' => 'nominees#results'
+    get '/success' => 'nominees#success'
 
   
   # The priority is based upon order of creation: first created -> highest priority.
