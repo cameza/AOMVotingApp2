@@ -37,7 +37,7 @@ class NomineesController < ApplicationController
         # Email was validated and member has not voted yet
         # The email is added to the @votedArray
         puts "------------- mail is valid --------------"
-        if member.voted == nil
+        if member.voted == nil || member.voted == false
           @isValid = true
           member.update(:voted => true)
           puts "------------- mail hasnt voted --------------"
