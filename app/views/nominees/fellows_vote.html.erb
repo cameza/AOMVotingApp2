@@ -50,7 +50,7 @@
       <% @nominees.each do |nominee| %>
       <!-- Since we at this stage only the nominees preselected by the committe have advanced
             then we must check that only nominees with committee_check == true are shown -->
-        <% if nominee.committee_check %>
+        <% if nominee.chairman_check %>
           <tr>
           <% @count = @count + 1 %>
           <!-- @index helps to keep track of the checkbox id within the array of checkboxes -->
@@ -116,6 +116,16 @@
     <div class="center">
       <%= submit_tag "Submit Vote", :class => "btn btn-primary btn-lg", :id => "vote" %>
     </div>
+    <div class="modal fade" id="submitModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <h3 style="text-align: center;">...Submitting your approvals.</h3>
+            <h3 style="text-align: center;">Please wait.</h3>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
   </div>
 </div>
 

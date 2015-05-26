@@ -17,7 +17,7 @@
       <% @nominees.each do |nominee| %>
       <!-- Since we at this stage only the nominees preselected by the committe have advanced
             then we must check that only nominees with committee_check == true are shown -->
-        <% if nominee.committee_check %>
+        <% if nominee.chairman_check %>
           <tr>
           <% @count = @count + 1 %>
             <td class="td"><%= @count %></td>

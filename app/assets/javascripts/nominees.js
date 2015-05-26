@@ -46,6 +46,14 @@ var main = $(function () {
 		window.location.replace('/success');
 	});
 
+	// Submit approvals form for fellows_vote view
+	$('#vote').click(function() {
+		$('.form-inline').submit();
+		$('#submitModal').modal('show');
+		$(this).prop("disabled", true);
+		window.location.replace('/success');
+	});
+
 	$('#year').click(function() {
 		$('#allNomTable').show();
 	})
