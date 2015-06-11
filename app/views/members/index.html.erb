@@ -1,27 +1,39 @@
-<h1>Listing members</h1>
+<h2 id="title">Members Database</h2>
+<div class="container-fluid" id="box">
+  <br>
+  <%= link_to 'Add Member', new_member_path, class: "btn btn-primary", style: "color: white;" %>
+  <div class="table-responsive">
+    <br>
+    <table class="table table-hover" id="membersTable">
+      <thead>
+        <tr>
+          <th colspan="1">#</th>
+          <th colspan="1">Email Address</th>
+          <th colspan="1">Voted</th>
+          <th colspan="1">Modify</th>
+          <th colspan="1">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @count = 0 %>
+        <% @members = @members.order("mail") %>
+        <% @members.each do |member| %>
+          <tr>
+            <% @count += 1 %>
+            <td><%= @count %></td>
+            <td><%= member.mail %></td>
+            <td><%= member.voted %></td>
+            <td><%= link_to 'Edit', edit_member_path(member), class: "btn btn-info btn-sm", style: "color: white;" %></td>
+            <td><%= link_to 'Delete', member, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm", style: "color: white;" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-<table>
-  <thead>
-    <tr>
-      <th>Mail</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @members.each do |member| %>
-      <tr>
-        <td><%= member.mail %></td>
-        <td><%= link_to 'Show', member %></td>
-        <td><%= link_to 'Edit', edit_member_path(member) %></td>
-        <td><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+  </div>
+  <%= link_to 'New Member', new_member_path, class: "btn btn-primary", style: "color: white;" %>
+  <br>
+</div>
 <br>
 
-<%= link_to 'New Member', new_member_path %>
+

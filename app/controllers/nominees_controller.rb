@@ -7,6 +7,12 @@ class NomineesController < ApplicationController
     @nominees = Nominee.all
   end
 
+  # GET /nominees
+  # GET /nominees.json
+  def chairman_reviewal
+    @nominees = Nominee.all
+  end
+
   # GET /candidate_selection
   def candidate_selection
     @nominees = Nominee.all
@@ -190,6 +196,16 @@ class NomineesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # DELETE ALL Nominees
+  def destroy_all
+    Nominee.delete_all
+    respond_to do |format|
+      format.html { redirect_to nominees_url }
+      format.json { head :no_content }
+    end
+  end
+
 
 
   private

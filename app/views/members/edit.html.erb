@@ -1,9 +1,16 @@
-<h1>Editing member</h1>
+<h3 id="title">Editing member</h3>
 
-<%= render 'form' %>
+<div class="tab-content">
+    <div class="container-fluid" id="about">
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
+				<%= render 'form' %>
+			</div>
+		</div>
+	</div>
+	<br><br><br><br><br><br>
+	<%= link_to 'Back', members_path %>
+</div>
 
-<%= link_to 'Show', @member %> |
-<%= link_to 'Back', members_path %>
-<% @votes.each do |vote| %>
-                <td><%= radio_button_tag "#{nominee.id}", vote.id, nominee.vote_id == vote.id  %></td> 
-              <% end %> <!-- End of the form -->
+
+

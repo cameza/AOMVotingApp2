@@ -7,6 +7,7 @@ AOMVotingApp2::Application.routes.draw do
   resources :nominees
     get '/candidate_selection' => 'nominees#candidate_selection'
     get '/chairman_selection' => 'nominees#chairman_selection'
+    get '/chairman_reviewal' => 'nominees#chairman_reviewal'
     get '/fellows_vote' => 'nominees#fellows_vote'
     post '/fellows_vote' => 'nominees#fellows_vote'
     get '/results' => 'nominees#results'
