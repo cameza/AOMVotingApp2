@@ -1,5 +1,5 @@
 
-<h2 id="title">Listing nominees</h2>
+<h2 id="title">Nominees</h2>
 <div class="container-fluid" id="box">
   <div class="table-responsive">
     <table class="table table-hover" id="allNomTable">
@@ -87,11 +87,15 @@
           <% end %>
         </tbody>
       </table>
-      <br>
-      <%= link_to 'New Nominee', new_nominee_path %>
+      <br><br>
+      <div class="center">
+        <h4>To nominate someone please click the "New Nominee" button below </h4>
+        <h4>and follow the instructions</h4>
+        <%= link_to 'New Nominee', new_nominee_path, class: "btn btn-primary", style: "color: white;" %>
+      </div>
     </div>
-</div><br>&nbsp
-<div id="year" class="center">
-  <p>2015</p>
+</div><br><br><br>
+<div id="year">
+  <p>_</p>
 </div>
 

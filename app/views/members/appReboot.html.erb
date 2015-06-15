@@ -1,0 +1,32 @@
+<h2 id="title">App Reboot</h2><br>
+
+
+<blockquote>
+  <p class="lead"><mark><u>Warning:</u></mark> This option should only be used by the app administrator. By rebooting the app all nominees will get deleted and progress during the voting process will be lost.</p>
+</blockquote><br>
+<div class="container-fluid" id="box2">
+	<%= bootstrap_form_tag :action => 'valid_member', remote: true do |f| %>
+	    <%= f.email_field :email, label: 'Enter email: ', hide_label: true, layout: :horizontal, placeholder: 'Your email is for validation purpose only' %> 
+	    <%= f.submit "Verify", :class => "btn btn-primary btn", :id => "valid_member" %>
+	<% end %>
+
+	<div id="accessError" class="center-block" style="background-color: red;">
+	    <p>  Your email does not appear on our records. Contact the administrators</p>
+  	</div>
+
+
+	<br><br><br>
+	<div class="container" id="rebootInterface" style="width: 300px; background-color: #9999;">
+		<div class="center" style="padding: 5px;">
+			<%= bootstrap_form_tag url: '/admin/totalRecall', remote: true do |f| %>
+			  	<%= f.email_field :email, label: "Password: " %>
+
+				<%= f.submit "Reboot App", class: "btn btn-danger btn-lg", id:"rebootBut" %>
+			<% end %>
+		</div>
+		
+	</div>
+
+	<br><br>
+</div>
+

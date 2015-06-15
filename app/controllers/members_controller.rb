@@ -23,6 +23,30 @@ class MembersController < ApplicationController
   def edit
   end
 
+  # Reboot the app. Delete all nominees and reset members' voted row to nil
+  def appReboot
+    @members = Member.all
+    auth_mail = params["email"] 
+    @valid_mail = false
+    if auth_mail == "aomvotingapp@outlook.com"
+      @valid_mail = true
+      puts "**************************** Authorization Granted ******************"
+      puts @valid_mail
+    end
+
+  end
+
+  def totalRecall
+    @members = Member.all
+    @nominees = Nominee.all
+    auth_mail = params["email"]
+    if auth_mail == "Admin1020!"
+      puts "**************************** Authorization Granted ******************"
+      @nominees.destroy_all
+      @members.update_all(:voted => nil)
+    end
+  end
+
   # POST /members
   # POST /members.json
   def create

@@ -9,6 +9,8 @@ var main = $(function () {
 	$('#success.jumbotron').show();
 	$("#note").hide();
 	$('#votingTable').hide();
+	$('#rebootInterface').hide();
+	$('#accessError').hide();
 	$('.bg-danger').hide();
 	$('.bg-warning').hide();
 	// If clicked in the close the jumbotron is closed
@@ -34,7 +36,7 @@ var main = $(function () {
 
 	// Submit voting form for fellows_vote view
 	$('#vote').click(function() {
-		$('.form-inline').submit();
+		//$('.form-inline').submit();
 		alert("Thank you! Your vote was submitted.");
 	});
 
@@ -48,7 +50,7 @@ var main = $(function () {
 
 	// Submit approvals form for fellows_vote view
 	$('#vote').click(function() {
-		$('.form-inline').submit();
+		//$('.form-inline').submit();
 		$('#submitModal').modal('show');
 		$(this).prop("disabled", true);
 		window.location.replace('/success');
