@@ -23,8 +23,8 @@
             <td class="td"><%= @count %></td>
             <td class="td"><%= nominee.name %></td>
             <td class="td"><%= nominee.confirmed %><p>(<%= (nominee.confirmed*100/@votersCount).round %>%)</p></td>
-            <td class="td"><%= (nominee.not_confirmed %><p>(<%= nominee.not_confirmed*100/@votersCount).round %>%)</p></td>
-            <td class="td"><%= (nominee.abstained %><p>(<%= nominee.abstained.to_i*100/@votersCount).round %>%)</p></td>
+            <td class="td"><%= nominee.not_confirmed %><p>(<%= (nominee.not_confirmed*100/@votersCount).round %>%)</p></td>
+            <td class="td"><%= nominee.abstained %><p>(<%= (nominee.abstained.to_i*100/@votersCount).round %>%)</p></td>
           </tr>
         <% end %> <!-- End of the if -->
       <% end %> <!-- End of for -->
