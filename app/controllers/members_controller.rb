@@ -27,11 +27,16 @@ class MembersController < ApplicationController
   def appReboot
     @members = Member.all
     auth_mail = params["email"] 
+    auth_password = params["password"]
     @valid_mail = false
-    if auth_mail == "aomvotingapp@outlook.com"
-      @valid_mail = true
-      puts "**************************** Authorization Granted ******************"
-      puts @valid_mail
+    @auth_error = false
+    if auth_mail == "denise@cmu.edu"
+      puts "**************************** Email Validated ******************"
+      if auth_password == "Admin1020!"
+        @valid_mail = true
+        puts "**************************** Password OK - Authorization Granted ******************"
+        puts @valid_mail
+      end
     end
 
   end
@@ -39,12 +44,9 @@ class MembersController < ApplicationController
   def totalRecall
     @members = Member.all
     @nominees = Nominee.all
-    auth_mail = params["email"]
-    if auth_mail == "Admin1020!"
-      puts "**************************** Authorization Granted ******************"
-      @nominees.destroy_all
-      @members.update_all(:voted => nil)
-    end
+    puts "**************************** Everything Deleted ******************"
+    @nominees.destroy_all
+    @members.update_all(:voted => nil)
   end
 
   # POST /members

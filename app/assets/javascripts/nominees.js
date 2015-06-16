@@ -1,3 +1,18 @@
+//Loads the Notes jumbotron as hidden
+	jQuery(window).load (function () { 
+      jQuery('#DIV').removeClass('#allNomTable')
+  	});
+	$('#allNomTable').hide();
+	$("#note").hide();
+	$('#votingTable').hide();
+	$('#rebootInterface').hide();
+	$('#accessError').hide();
+	$('.bg-danger').hide();
+	$('.bg-warning').hide();
+
+
+
+
 var main = $(function () {
 	/* For candidate_selection and chairman_selection*/
 
@@ -56,10 +71,17 @@ var main = $(function () {
 		window.location.replace('/success');
 	});
 
+	$('#rebootBut').click(function() {
+		$(this).prop("disabled", true);
+		window.location.replace('/admin/totalRecall');
+	})
+
 	$('#year').click(function() {
 		$('#allNomTable').show();
 	})
 });
 
 $(document).ready(main);
+
+
 

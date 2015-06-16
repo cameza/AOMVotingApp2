@@ -4,7 +4,7 @@ AOMVotingApp2::Application.routes.draw do
   resources :members
     post  '/valid_member' => 'members#valid_member'
     get   '/admin/appReboot' => 'members#appReboot'
-    post  '/admin/totalRecall' => 'members#totalRecall'
+    get  '/admin/totalRecall' => 'members#totalRecall'
     post  '/admin/appReboot' => 'members#appReboot'
 
   resources :nominees

@@ -6,9 +6,9 @@
         <thead>
           <tr>
             <th colspan="1">#</th>
-            
-            <th colspan="1">Mail</th>
             <th colspan="1">Name</th>
+            <th colspan="1">Mail</th>
+            <th colspan="1">Nominator</th>
             <th colspan="1">Documents</th>
             <th colspan="1">Approved by Committee</th>
             <th colspan="1"># of Approvals</th>
@@ -22,10 +22,10 @@
             <%= simple_form_for(nominee, :html => {:multipart => true, :class => '.form-inline'}) do |f| %>
               <tr>
                 <% @count += 1 %>
-                <td><%= @count %></td>
-                
+                <td><%= @count %></td>   
+                <td><%= nominee.name %></td>        
                 <td><%= nominee.mail %></td>
-                <td><%= nominee.name %></td>
+                <td><%= nominee.nominator_mail %></td>
                 <td class="td">
                     <!-- Button trigger modal -->
                    <a href="#myModal<%= nominee.id%>" role="button" class="center" data-toggle="modal">View</a>          <!-- Modal -->
