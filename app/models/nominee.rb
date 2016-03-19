@@ -5,7 +5,7 @@ class Nominee < ActiveRecord::Base
 	validates :mail, :name, :cv, :statement, :nominator_mail, presence: true
 	validates_format_of :mail, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, message: "doesn't look like an email address" 
 	validates :mail, :uniqueness => { :message => " Warning! - That email belongs to a fellow that was already nominated" }
-	validates :nominator_mail, :uniqueness => { :message => " Warning! - You already submitted a nomination" }
+	validates :nominator_mail, :uniqueness => { :case_sensitive => false, :message => " Warning! - You already submitted a nomination" }
 	validates_format_of :nominator_mail, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, message: "doesn't look like an email address" 
 	validate :nominator_mail_is_valid
 
@@ -15,7 +15,7 @@ class Nominee < ActiveRecord::Base
 		@member = Member.all
 		@count = 0
 	    @member.each do |f|
-	      if f.mail == nominator_mail
+	      if f.mail.downcase == nominator_mail.downcase
 	      	@count = 1
 	      end
 	    end
