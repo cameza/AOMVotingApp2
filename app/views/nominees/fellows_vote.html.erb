@@ -50,7 +50,7 @@
       <% @nominees.each do |nominee| %>
       <!-- Since we at this stage only the nominees preselected by the committe have advanced
             then we must check that only nominees with committee_check == true are shown -->
-        <% if nominee.chairman_check %>
+        <!-- % if nominee.chairman_check - 05/22/2016: Commented out since they want all nominees available for vote %>
           <tr>
           <% @count = @count + 1 %>
           <!-- @index helps to keep track of the checkbox id within the array of checkboxes -->
@@ -110,7 +110,7 @@
               
             <% end %>
           </tr>
-        <% end %> <!-- End of the if -->
+        <!-- % end %> End of the if-- 05/22/2016:commented out since they want all of the nominees available to be voted-->
       <% end %> <!-- End of for -->
     </table><br>
     <div class="center">
