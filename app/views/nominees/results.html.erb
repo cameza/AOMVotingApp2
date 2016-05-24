@@ -17,7 +17,7 @@
       <% @nominees.each do |nominee| %>
       <!-- Since we at this stage only the nominees preselected by the committe have advanced
             then we must check that only nominees with committee_check == true are shown -->
-        <% if nominee.chairman_check %>
+        <!--% if nominee.chairman_check %> 05/23/2016: Disabled since they wanted to enable the voting process for all nominees -->
           <tr>
           <% @count = @count + 1 %>
             <td class="td"><%= @count %></td>
@@ -26,7 +26,7 @@
             <td class="td"><%= nominee.not_confirmed %><p>(<%= (nominee.not_confirmed.to_f*100/@votersCount.to_f).round(2) %>%)</p></td>
             <td class="td"><%= nominee.abstained %><p>(<%= (nominee.abstained.to_f*100/@votersCount.to_f).round(2) %>%)</p></td>
           </tr>
-        <% end %> <!-- End of the if -->
+        <!-- % end %> <! End of the if -->
       <% end %> <!-- End of for -->
     </table><br>
     <div id="totalVotes">

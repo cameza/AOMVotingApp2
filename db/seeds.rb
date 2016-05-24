@@ -5,7 +5,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+<<<<<<< HEAD
 # Added member list of 2016
+=======
+>>>>>>> 47aa2d5083fb6f94105f72ed61d63f829f5efa74
 Member.create(:mail => 'Nancy.adler@mcgill.ca')
 Member.create(:mail => 'PAdler@marshall.usc.edu')
 Member.create(:mail => 'aldag@bus.wisc.edu')
@@ -201,4 +204,8 @@ Member.create(:mail => 'eam33@cornell.edu')
 Member.create(:mail => 'pmirv@aol.com')
 Member.create(:mail => 'Margaret.A.Peteraf@tuck.dartmouth.edu')
 Member.create(:mail => 'prattmg@bc.edu')
+<<<<<<< HEAD
 Member.create(:mail => 'patrick.wright@moore.sc.edu')
+=======
+Member.create(:mail => 'patrick.wright@moore.sc.edu')
+>>>>>>> 47aa2d5083fb6f94105f72ed61d63f829f5efa74
