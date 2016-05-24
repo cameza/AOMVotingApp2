@@ -53,7 +53,7 @@
         <!-- % if nominee.chairman_check - 05/22/2016: Commented out since they want all nominees available for vote %>
           <tr>
           <% @count = @count + 1 %>
-          <!-- @index helps to keep track of the checkbox id within the array of checkboxes -->
+          <! @index helps to keep track of the checkbox id within the array of checkboxes -->
           <% @index = @count - 1 %>
             <td class="td"><%= @count %></td>
             <td class="td"><%= nominee.name %></td>
@@ -110,7 +110,7 @@
               
             <% end %>
           </tr>
-        <!-- % end %> End of the if-- 05/22/2016:commented out since they want all of the nominees available to be voted-->
+        <!-- % end %> End of the if 05/22/2016:commented out since they want all of the nominees available to be voted-->
       <% end %> <!-- End of for -->
     </table><br>
     <div class="center">
