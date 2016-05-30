@@ -1,13 +1,17 @@
 // Check if the email is valid and if the member has voted already to display
 // the voting table
+$('#voted').hide();
+$('#invalid').hide();
+$('#votingTable').hide();
 if(<%= @isValid %>){
 	if(<%= @voted %>){
-		$('.bg-warning').show();
-		$('.table-responsive').show();
+		$('#voted').show();
+		$('#votingTable').hide();
+		$('.table-responsive').show(); //Left intentionally for edge cases where someone may need this
 	}else {
 		$('.table-responsive').show();
 	}
 }
 else{
-	$('.bg-danger').show();
+	$('#invalid').show();
 };

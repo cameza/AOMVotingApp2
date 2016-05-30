@@ -26,7 +26,11 @@
   </div>
   <!-- Display if voted already -->
   <div id="voted" class="center-block">
-    <p class="bg-warning">Warning: You can only vote once.</p>
+    <p class="bg-warning">Warning: Our records indicate that you have already voted.</p>
+  </div>
+  <!-- Display after vote submission -->
+  <div id="vote_submitted" class="center-block">
+    <p class="bg-success">Thank you, your submission has been recorded.</p>
   </div>
   <!-- Display if valid -->
   <div id="votingTable" class="table-responsive">
@@ -106,17 +110,16 @@
                 <td class="radioBut"><%= f.radio_button :vote_id, 1, checked: false %></td>
                 <td class="radioBut"><%= f.radio_button :vote_id, 2, checked: false %></td>
                 <td class="radioBut"><%= f.radio_button :vote_id, 3, checked: true %></td>
-                <% end %>
-              
+              <% end %>
             <% end %>
           </tr>
         <!-- % end %> End of the if 05/22/2016:commented out since they want all of the nominees available to be voted-->
       <% end %> <!-- End of for -->
     </table><br>
     <div class="center">
-      <%= submit_tag "Submit Vote", :class => "btn btn-primary btn-lg", :id => "vote" %>
+      <%= submit_tag "Submit Votes", :class => "btn btn-primary btn-lg", :id => "submit_votes_redirect" %>
     </div>
-    
+    <li><%= @count %></li>
   </div>
 </div>
 

@@ -12,7 +12,7 @@
         </tr>
       </thead>
       <% @count = 0 %>
-      <% @nominees = @nominees.order("Confirmed DESC") %>
+      <% @nominees = @nominees.order("name") %>
       <!-- Loop through the nominees table to display each one in a different row  -->
       <% @nominees.each do |nominee| %>
       <!-- Since we at this stage only the nominees preselected by the committe have advanced

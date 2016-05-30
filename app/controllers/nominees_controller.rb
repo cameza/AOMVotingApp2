@@ -72,8 +72,8 @@ class NomineesController < ApplicationController
     end
   end
 
-  def success
-  end
+  #def success
+  #end
 
   # GET /nominees/1
   # GET /nominees/1.json
