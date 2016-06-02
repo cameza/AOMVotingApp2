@@ -13,6 +13,18 @@
       </thead>
       <% @count = 0 %>
       <% @nominees = @nominees.order("name") %>
+      <% @total_voters = 0 %>
+      <% @subject1 = @nominees[8].confirmed.to_f + @nominees[8].not_confirmed.to_f + @nominees[8].abstained.to_f %>
+      <% @subject2 = @nominees[6].confirmed.to_f + @nominees[6].not_confirmed.to_f + @nominees[6].abstained.to_f %>
+      <h1><%= @subject1 %></h1>
+      <h1><%= @subject2 %></h1>
+
+      <% if @subject1 == @subject2 %>
+          <% @total_voters = @subject2 %>
+          <h1><%= Total voters = @total_voters %></h1>
+      <% else %>
+          <h1>Error</h1>
+      <% end %>
       <!-- Loop through the nominees table to display each one in a different row  -->
       <% @nominees.each do |nominee| %>
       <!-- Since we at this stage only the nominees preselected by the committe have advanced
@@ -22,15 +34,15 @@
           <% @count = @count + 1 %>
             <td class="td"><%= @count %></td>
             <td class="td"><%= nominee.name %></td>
-            <td class="td"><%= nominee.confirmed %><p>(<%= (nominee.confirmed.to_f*100/@votersCount.to_f).round(2) %>%)</p></td>
-            <td class="td"><%= nominee.not_confirmed %><p>(<%= (nominee.not_confirmed.to_f*100/@votersCount.to_f).round(2) %>%)</p></td>
-            <td class="td"><%= nominee.abstained %><p>(<%= (nominee.abstained.to_f*100/@votersCount.to_f).round(2) %>%)</p></td>
+            <td class="td"><%= nominee.confirmed %><p>(<%= (nominee.confirmed.to_f*100/@total_voters.to_f).round(2) %>%)</p></td>
+            <td class="td"><%= nominee.not_confirmed %><p>(<%= (nominee.not_confirmed.to_f*100/@total_voters.to_f).round(2) %>%)</p></td>
+            <td class="td"><%= nominee.abstained %><p>(<%= (nominee.abstained.to_f*100/@total_voters.to_f).round(2) %>%)</p></td>
           </tr>
         <!-- % end %> <! End of the if -->
       <% end %> <!-- End of for -->
     </table><br>
     <div id="totalVotes">
-      <h3 class="bg-success">Total voting members: <%= @votersCount %> of <%= Member.count %> ( <%= @votersCount*100/Member.count %>% )</h3>
+      <h3 class="bg-success">Total voting members: <%= @total_voters %> of <%= Member.count %> ( <%= @total_voters*100/Member.count %>% )</h3>
     </div>
   </div>
 </div>
