@@ -12,7 +12,7 @@
         </tr>
       </thead>
       <% @count = 0 %>
-      <% @nominees = @nominees.order("confirmed") %>
+      <% @nominees = @nominees.order("confirmed DESC") %>
       
       <!-- Define the total number of voters by adding the number of confirmed, against and abstained votes. Check that this number is equal for two of the nominees to verify consistency -->
       <% @total_voters = 0 %>
